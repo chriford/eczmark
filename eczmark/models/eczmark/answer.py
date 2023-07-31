@@ -15,13 +15,11 @@ class Answer(Timestamp):
     attachments = models.ManyToManyField(
         to="eczmark.Attachment",
         verbose_name="Supporting images",
-        null=True,
         blank=True,
     )
     links = models.ManyToManyField(
         to="eczmark.Link",
         verbose_name="Supporting link",
-        null=True,
         blank=True,
     )
     body = models.TextField(
