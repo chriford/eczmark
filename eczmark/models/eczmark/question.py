@@ -30,6 +30,7 @@ class Question(Timestamp):
         default="0000",
         null=True,
         blank=True,
+        max_length=4,
         validators=[
             MinLengthValidator(limit_value=4),
             MaxLengthValidator(limit_value=4),
