@@ -13,7 +13,7 @@ class Link(Timestamp):
         verbose_name="Note",
         help_text="""A quick note about this supporting link. Must have words between 15 and 100.""",
         max_length=100,
-        max_length=[
+        validators=[
             MinLengthValidator(limit_value=15),
             MaxLengthValidator(limit_value=100),
         ],
