@@ -3,7 +3,6 @@ from django.db import models
 from eczmark.models.abstract import Timestamp
 from django.core.validators import MaxLengthValidator, MinLengthValidator
 
-
 class Question(Timestamp):
     """A model containing the meta data of the question paper uploaded."""
     user = models.ForeignKey(
