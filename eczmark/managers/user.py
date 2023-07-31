@@ -45,5 +45,5 @@ class CustomBaseUserManager(BaseUserManager):
 
         return user
     
-    def has_module_perms(self, *args): # or add
+    def has_module_perms(self, *args):
         return True
