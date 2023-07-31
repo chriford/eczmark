@@ -7,6 +7,7 @@ class Issue(Timestamp):
     name = models.CharField(
         verbose_name="name",
         help_text="A brief title of the common issue",
+        max_length=100,
         validators=[
             MinLengthValidator(5),
             MaxLengthValidator(100),
