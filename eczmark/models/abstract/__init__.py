@@ -1,1 +1,1 @@
-from timestamp import Timestamp
+from eczmark.models.abstract.timestamp import Timestamp

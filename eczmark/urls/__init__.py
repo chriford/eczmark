@@ -1,2 +1,2 @@
-import auth_urls
-import core_urls
+from . import auth_urls
+from . import core_urls
