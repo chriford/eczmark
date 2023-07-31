@@ -9,7 +9,7 @@ class Report(Timestamp):
         verbose_name="Marker",
         on_delete=models.SET_NULL,
         default=True,
-        null=False,
+        null=True,
         blank=True,
     )
     issue = models.ForeignKey(
