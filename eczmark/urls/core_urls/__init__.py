@@ -1,1 +1,0 @@
-from .core_urls import *
