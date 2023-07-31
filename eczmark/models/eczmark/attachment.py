@@ -5,14 +5,6 @@ from django.core.validators import MaxLengthValidator, MinLengthValidator
 
 class Attachment(Timestamp):
     file = models.ImageField(upload_to='attachments/%Y-%M-%d/')
-    answer = models.ForeignKey(
-        to="eczmark.Answer",
-        help_text="""Select the answer to which this supporting image belong, leave blank 
-        for default value; Empty.""",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=False,
-    )
     note = models.CharField(
         verbose_name="Note",
         help_text="""A quick note about this supporting image. Must have words between 20 and 100.""",

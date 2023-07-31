@@ -9,14 +9,6 @@ class Link(Timestamp):
         null=True,
         blank=True,
     )
-    answer = models.ForeignKey(
-        to="eczmark.Answer", 
-        help_text="""Select the answer to which this supporting link belong,
-        leave blank for default value; Empty""",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=False,
-    )
     note = models.CharField(
         verbose_name="Note",
         help_text="""A quick note about this supporting link. Must have words between 15 and 100.""",
