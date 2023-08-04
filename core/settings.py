@@ -27,11 +27,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'eczmark.apps.EczmarkConfig',
+    "eczmark.apps.EczmarkConfig",
+    "whitenoise.runserver_nostatic",
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -108,20 +110,23 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
+STATICFILES_STORAGE = "whitenoise.storage.StaticFilesStorage"
+
+static_dir_is_valid = os.path.exists(os.path.join(BASE_DIR, '.static'))
+if not static_dir_is_valid:
+    os.mkdir(os.path.join(BASE_DIR, '.static/'))
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'eczmark/static')
+    os.path.join(BASE_DIR, 'eczmark/static/'),
+    os.path.join(BASE_DIR, 'core/static/'),
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = BASE_DIR / '.static/'
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/media/'
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+MEDIA_ROOT = BASE_DIR / 'core/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
