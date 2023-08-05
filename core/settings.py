@@ -1,5 +1,5 @@
 import os
-
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,7 +29,31 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "eczmark.apps.EczmarkConfig",
     "whitenoise.runserver_nostatic",
+
+    "drf_yasg2",
+    "rest_framework",
+    "rest_framework_simplejwt",
 ]
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    )
+}
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+}
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "JWT [Bearer {JWT}]": {
+            "name": "Authorization",
+            "type": "apiKey",
+            "in": "header",
+        }
+    },
+    "USE_SESSION_AUTH": False,
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
