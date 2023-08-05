@@ -1,21 +1,21 @@
 
 migrate:
-	@python manage.py migrate
+	@python3 manage.py migrate
 
 migrations:
-	@python manage.py makemigrations
+	@python3 manage.py makemigrations
 
 collectstatic:
-	@python manage.py collectstatic --no-input
+	@python3 manage.py collectstatic --no-input
 
 superuser:
-	@python manage.py createsuperuser
+	@python3 manage.py createsuperuser
 
-run:
-	@python manage.py runserver 8001
+runserver:
+	@python3 manage.py runserver 8001
 
 django-shell:
-	@python manage.py shell
+	@python3 manage.py shell
 
 build:
 	@docker compose build
