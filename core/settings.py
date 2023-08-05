@@ -1,5 +1,5 @@
 import os
-
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -35,7 +35,10 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
 ]
 
-
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+}
 SWAGGER_SETTINGS = {
     "SECURITY_DEFINITIONS": {
         "JWT [Bearer {JWT}]": {
