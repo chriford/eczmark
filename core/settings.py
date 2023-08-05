@@ -29,6 +29,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "eczmark.apps.EczmarkConfig",
     "whitenoise.runserver_nostatic",
+
+    "drf_yasg2",
+    "rest_framework",
+    "rest_framework_simplejwt",
 ]
 
 MIDDLEWARE = [
