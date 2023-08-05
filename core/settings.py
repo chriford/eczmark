@@ -110,7 +110,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATICFILES_STORAGE = "whitenoise.storage.StaticFilesStorage"
 
 static_dir_is_valid = os.path.exists(os.path.join(BASE_DIR, '.static'))
 if not static_dir_is_valid:
@@ -118,14 +117,15 @@ if not static_dir_is_valid:
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'eczmark/static/'),
+    # os.path.join(BASE_DIR, 'eczmark/static/'),
     os.path.join(BASE_DIR, 'core/static/'),
 ]
 
-STATIC_URL = '/static/'
+STATIC_URL = '.static/'
 STATIC_ROOT = BASE_DIR / '.static/'
+STATICFILES_STORAGE = "whitenoise.storage.StaticFilesStorage"
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'core/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
