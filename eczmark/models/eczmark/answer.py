@@ -11,6 +11,12 @@ class Answer(Timestamp):
         null=True,
         blank=True,
     )
+    question = models.ForeignKey(
+        to="eczmark.Question", verbose_name="Question",
+        help_text="Select the question to be answered",
+        on_delete=models.CASCADE,
+        null=True, blank=True,
+    )
     attachments = models.ManyToManyField(
         to="eczmark.Attachment",
         verbose_name="Supporting images",
