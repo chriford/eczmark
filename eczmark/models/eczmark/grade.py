@@ -11,4 +11,4 @@ class Grade(Timestamp):
     )
 
     def __str__(self):
-        return self.grade
+        return str(self.grade)
