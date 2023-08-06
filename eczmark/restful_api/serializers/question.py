@@ -1,7 +1,7 @@
 
 from rest_framework import serializers
 
-from eczmark.models import Question, Grade
+from eczmark.models import Question
 from eczmark.restful_api.serializers import (
     SubjectSerializer,
     GradeSerializer,
