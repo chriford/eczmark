@@ -25,7 +25,7 @@ class Question(Timestamp):
         null=True,
         blank=False,
     )
-    year_cleaned = models.CharField(
+    cleaned_year = models.CharField(
         default="0000",
         null=True,
         blank=True,
@@ -45,7 +45,7 @@ class Question(Timestamp):
     def save(self):
         unprocessed_year = self.year_uncleaned
         if unprocessed_year:
-            self.year_cleaned = unprocessed_year.year
+            self.cleaned_year = unprocessed_year.year
         else:
             raise ValueError("Expected a value for the field 'Question paper year'")
         return super().save()
