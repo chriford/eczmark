@@ -6,3 +6,4 @@ from .question import QuestionSerializer
 from .link import LinkSerializer
 from .attachment import AttachmentSerializer
 from .answer import AnswerSerializer
+from .user import UserSerializer
