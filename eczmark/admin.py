@@ -59,8 +59,8 @@ class SubjectModelAdmin(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionModelAdmin(admin.ModelAdmin):
-    list_display = ['user','question_paper','grade','year_uncleaned','year_cleaned','subject']
-    search_fields = ['subject', 'year_cleaned', 'grade']
+    list_display = ['user','question_paper','grade','year_uncleaned','cleaned_year','subject']
+    search_fields = ['subject', 'cleaned_year', 'grade']
     list_per_page = 20
 
 
