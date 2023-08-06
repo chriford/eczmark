@@ -11,4 +11,5 @@ router.register(r'questions', AnswerViewSet, basename='question')
 router.register(r'answers', AnswerViewSet, basename='answer')
 router.register(r'reports', AnswerViewSet, basename='report')
 
+app_name = 'eczmark'
 urlpatterns = router.urls
