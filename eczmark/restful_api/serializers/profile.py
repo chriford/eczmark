@@ -18,5 +18,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             raise ValueError("Expected data for unnullable fields")
         user = User.objects.create(**user_data)
 
+        if not validated_data:
+            raise ValueError("Expected data for unnullable fields")
         profile = Profile.objects.create(user=user, **validated_data)
         return profile

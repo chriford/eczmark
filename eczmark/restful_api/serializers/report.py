@@ -33,6 +33,8 @@ class ReportSerializer(serializers.ModelSerializer):
         if not issue_data:
             raise ValueError("Expected data for unnullable fields")
         
+        if not validated_data:
+            raise ValueError("Expected data for unnullable fields")
         report = Report.objects.create(user=user, issue=issue, **validated_data)
         return report
     
