@@ -29,8 +29,14 @@ class AnswerSerializer(serializers.ModelSerializer):
         supporting_links_data = validated_data.pop('links', None)
         if not user_data:
             raise ValueError("Expected data for unnullable fields")
-        user = User.objects.create(**user_data)
-        
+        try:
+            user = User.objects.get(username = user_data.get('username'))
+        except User.DoesNotExist:
+            try:
+                user = User.objects.get(email = user_data.get('email'))
+            except User.DoesNotExist:
+                raise ValueError("Expected valid user data. unique-identifiers: username, email")
+                
         if not question_data:
             raise ValueError("Expected data for unnullable fields")
         question = Question.objects.create(user=user, **question_data)
