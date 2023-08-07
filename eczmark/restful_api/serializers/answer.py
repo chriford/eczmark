@@ -1,7 +1,7 @@
 
 from rest_framework import serializers
 
-from eczmark.models import Answer
+from eczmark.models import Answer, User, Attachment, Link, Question
 from .link import LinkSerializer
 from .question import QuestionSerializer
 from .attachment import AttachmentSerializer
@@ -21,3 +21,41 @@ class AnswerSerializer(serializers.ModelSerializer):
             'links',
             'body',
         ]
+    
+    def create(self, validated_data):
+        user_data = validated_data.pop('user', None)
+        question_data = validated_data.pop('question', None)
+        supporting_documents_data = validated_data.pop('attachments', None)
+        supporting_links_data = validated_data.pop('links', None)
+        if not user_data:
+            raise ValueError("Expected data for unnullable fields")
+        try:
+            user = User.objects.get(username = user_data.get('username'))
+        except User.DoesNotExist:
+            try:
+                user = User.objects.get(email = user_data.get('email'))
+            except User.DoesNotExist:
+                raise ValueError("Expected valid user data. unique-identifiers: username, email")
+                
+        if not question_data:
+            raise ValueError("Expected data for unnullable fields")
+        question = Question.objects.create(user=user, **question_data)
+
+        if not supporting_documents_data:
+            raise ValueError("Expected data for unnullable fields")
+        for document_obj in supporting_documents_data:
+            document = Attachment.objects.create(**document_obj)
+            question.attachments.add(document)
+            question.save()
+
+        if not supporting_links_data:
+            raise ValueError("Expected data for unnullable fields")
+        for link_obj in supporting_links_data:
+            link = Link.objects.create(**link_obj)
+            question.links.add(link)
+            question.save()
+        
+        if not validated_data:
+            raise ValueError("Expected data for unnullable fields")
+        answer = Answer.objects.create(question=question, **validated_data)
+        return answer
