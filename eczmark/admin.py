@@ -80,6 +80,6 @@ class AttachmentModelAdmin(admin.ModelAdmin):
 
 @admin.register(Answer)
 class AnswerModelAdmin(admin.ModelAdmin):
-    list_display = ['user','body']
+    list_display = ['question', 'user','body']
     search_fields = ['body']
     list_per_page = 20

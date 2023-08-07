@@ -8,6 +8,11 @@ from eczmark.models import Answer
 from ..serializers import AnswerSerializer
 
 class AnswerViewSet(ModelViewSet):
+<<<<<<< HEAD
+=======
+    serializer_class = AnswerSerializer
+    queryset = Answer.objects.all()
+>>>>>>> implement-model-viesets
     def list(self, request):
         queryset = Answer.objects.all()
         serializer = AnswerSerializer(queryset, many=True)
@@ -31,4 +36,7 @@ class AnswerViewSet(ModelViewSet):
             "status_code": status.HTTP_404_NOT_FOUND,
         })
         return response
+<<<<<<< HEAD
     
+=======
+>>>>>>> implement-model-viesets
