@@ -8,6 +8,16 @@ from .attachment import AttachmentSerializer
 from .user import UserSerializer
 
 class AnswerSerializer(serializers.ModelSerializer):
+    attachments = AttachmentSerializer()
+    question = QuestionSerializer()
+    user = UserSerializer()
+    
     class Meta:
         model = Answer
-        fields = '__all__'
+        fields = [
+            'user',
+            'question',
+            'attachments',
+            'links',
+            'body',
+        ]
