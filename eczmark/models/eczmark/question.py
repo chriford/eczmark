@@ -6,7 +6,7 @@ from django.core.validators import MaxLengthValidator, MinLengthValidator
 class Question(Timestamp):
     """A model containing the meta data of the question paper uploaded."""
     user = models.ForeignKey(
-        to="eczmark.User", verbose_name="Marker",
+        to="eczmark.User", verbose_name="Question Poster Name",
         on_delete=models.SET_NULL,
         null=True, blank=True,
     )
@@ -25,7 +25,7 @@ class Question(Timestamp):
         null=True,
         blank=False,
     )
-    year_cleaned = models.CharField(
+    cleaned_year = models.CharField(
         default="0000",
         null=True,
         blank=True,
@@ -42,10 +42,13 @@ class Question(Timestamp):
         blank=False,
     )
 
+    def __str__(self):
+        return f"Subject: {self.subject.name} - Year: {self.cleaned_year}"
+    
     def save(self):
         unprocessed_year = self.year_uncleaned
         if unprocessed_year:
-            self.year_cleaned = unprocessed_year.year
+            self.cleaned_year = unprocessed_year.year
         else:
             raise ValueError("Expected a value for the field 'Question paper year'")
         return super().save()

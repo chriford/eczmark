@@ -16,8 +16,10 @@ class Attachment(Timestamp):
         null=True,
         blank=True,
     )
-
+    
     def __str__(self):
+        if self.note:
+            return self.note
         if self.file:
             file_name = self.file.name
             return file_name

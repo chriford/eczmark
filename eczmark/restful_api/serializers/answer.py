@@ -1,9 +1,9 @@
 
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 
 from eczmark.models import Answer
 
-class AnswerSerializer(ModelSerializer):
+class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
         fields = '__all__'
