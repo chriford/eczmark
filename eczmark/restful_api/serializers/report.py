@@ -23,8 +23,14 @@ class ReportSerializer(serializers.ModelSerializer):
 
         if not user_data:
             raise ValueError("Expected data for unnullable fields")
-        user = User.objects.create(**user_data)
-        
+        try:
+            user = User.objects.get(username = user_data.get('username'))
+        except User.DoesNotExist:
+            try:
+                user = User.objects.get(email = user_data.get('email'))
+            except User.DoesNotExist:
+                raise ValueError("Expected valid user data. unique-identifiers: username, email")
+                
         try:
             issue = Issue.objects.get(name=issue_data.name)
         except Issue.DoesNotExist:
