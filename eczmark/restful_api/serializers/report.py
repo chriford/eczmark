@@ -1,9 +1,18 @@
 
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 
 from eczmark.models import Report
+from .user import UserSerializer
+from .issue import IssueSerializer
 
-class ReportSerializer(ModelSerializer):
+class ReportSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+    issue = IssueSerializer()
     class Meta:
         model = Report
-        fields = '__all__'
+        fields = [
+            'user',
+            'issue',
+            'message',
+            'active',
+        ]

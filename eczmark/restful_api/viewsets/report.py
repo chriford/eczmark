@@ -8,18 +8,8 @@ from eczmark.models import Report
 from ..serializers import ReportSerializer
 
 class ReportViewSet(ModelViewSet):
-    def list(self, request):
-        queryset = Report.objects.all()
-        serializer = ReportSerializer(queryset, many=True)
-        response = Response(serializer.data)
-        return response
-    
-    def retrieve(self, request, pk):
-        queryset = Report.objects.all()
-        report_object = get_object_or_404(queryset, pk=pk)
-        serializer = ReportSerializer(report_object)
-        response = Response(serializer.data)
-        return response
+    serializer_class = ReportSerializer
+    queryset = Report.objects.all()
     
     def destroy(self, request, pk):
         queryset = Report.objects.all()

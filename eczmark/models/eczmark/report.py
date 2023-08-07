@@ -1,7 +1,6 @@
 from django.db import models
 
 from eczmark.models.abstract import Timestamp
-from django.core.validators import MaxLengthValidator, MinLengthValidator
 
 class Report(Timestamp):
     user = models.ForeignKey(
