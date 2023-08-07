@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  database:
+    container_name: postgres_db
+    image: postgres
+    restart: always
+    environment:
+      POSTRES_DB: blog
+      POSTGRES_USER: blog
+      POSTGRES_PASSWORD: digibrand-blog
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  
+  
