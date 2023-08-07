@@ -11,6 +11,7 @@ from ..serializers import AnswerSerializer
 class AnswerViewSet(ModelViewSet):
     serializer_class = AnswerSerializer
     queryset = Answer.objects.all()
+    permission_classes = (IsAuthenticated,)
     
     
     def destroy(self, request, pk):

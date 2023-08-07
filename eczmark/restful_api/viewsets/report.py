@@ -11,6 +11,7 @@ from ..serializers import ReportSerializer
 class ReportViewSet(ModelViewSet):
     serializer_class = ReportSerializer
     queryset = Report.objects.all()
+    permission_classes = (IsAuthenticated,)
     
     def destroy(self, request, pk):
         queryset = Report.objects.all()
