@@ -7,6 +7,7 @@ from eczmark.restful_api.viewsets  import (
 )
 
 router = DefaultRouter()
+router.register(r'users', ReportViewSet, basename='user')
 router.register(r'questions', QuestionViewSet, basename='question')
 router.register(r'answers', AnswerViewSet, basename='answer')
 router.register(r'reports', ReportViewSet, basename='report')
