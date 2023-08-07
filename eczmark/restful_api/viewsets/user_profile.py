@@ -1,5 +1,6 @@
 
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
 
 from eczmark.models import Profile
 from ..serializers import ProfileSerializer
