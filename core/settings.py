@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "drf_yasg2",
     "rest_framework",
     "rest_framework_simplejwt",
+    "rolepermissions",
 ]
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -155,3 +156,4 @@ MEDIA_ROOT = BASE_DIR / 'core/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'eczmark.User'
+ROLEPERMISSIONS_MODULE = "eczmark.roles"
