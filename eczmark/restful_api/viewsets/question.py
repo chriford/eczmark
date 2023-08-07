@@ -8,18 +8,8 @@ from eczmark.models import Question
 from ..serializers import QuestionSerializer
 
 class QuestionViewSet(ModelViewSet):
-    def list(self, request):
-        queryset = Question.objects.all()
-        serializer = QuestionSerializer(queryset, many=True)
-        response = Response(serializer.data)
-        return response
-    
-    def retrieve(self, request, pk):
-        queryset = Question.objects.all()
-        question_object = get_object_or_404(queryset, pk=pk)
-        serializer = QuestionSerializer(question_object)
-        response = Response(serializer.data)
-        return response
+    serializer_class = QuestionSerializer
+    queryset = Question.objects.all()
     
     def destroy(self, request, pk):
         queryset = Question.objects.all()
@@ -31,4 +21,3 @@ class QuestionViewSet(ModelViewSet):
             "status_code": status.HTTP_404_NOT_FOUND,
         })
         return response
-

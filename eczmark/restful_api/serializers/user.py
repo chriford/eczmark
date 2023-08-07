@@ -3,7 +3,6 @@ from rest_framework import serializers
 
 from eczmark.models import User
 
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
