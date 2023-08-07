@@ -13,7 +13,6 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user_data = validated_data.pop('user', None)
-
         if not user_data:
             raise ValueError("Expected data for unnullable fields")
         user = User.objects.create(**user_data)
